@@ -6,7 +6,7 @@ A web app for developers, to gather and collaborate.
 
 ```
 As a potential user
-I would like to sign up to MeetApps
+I would like to sign up to Social Code
 So that I can create an account
 ```
 ```
@@ -39,7 +39,7 @@ So I can let other users know about their dev friendliness
 ```
 As a user
 I would like to be able to personalise a user profile
-So that I can use MeetApps
+So that I can use Social Code
 ```
 ```
 As a user
