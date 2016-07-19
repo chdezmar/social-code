@@ -1,0 +1,6 @@
+<%= form_for current_user, url: profile_path do |form| %>
+  <%= form.fields_for :profile do |profile| %>
+     <%= profile.text_field :name %>
+  <% end %>
+  <%= form.submit %>
+<% end %>

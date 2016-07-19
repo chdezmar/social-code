@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'profiles#index'
 
-  resources :users
-  resources :profiles
+  resources :users, only: :index
+  resource :profile, only: [:show, :update]
 
 
 end
