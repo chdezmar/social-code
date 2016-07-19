@@ -21,7 +21,8 @@ feature 'places' do
 
     scenario 'user specifies hotbox commercial street' do
       visit '/places/new'
-      fill_in 'Search Place:', with: 'hotbox commercial street'
+      fill_in 'Place Name', with: 'hotbox'
+      fill_in 'Place Street', with: 'commercial street'
       click_button 'Submit'
       expect(current_path).to eq '/places'
       expect(page).to have_content 'HotBox London'
