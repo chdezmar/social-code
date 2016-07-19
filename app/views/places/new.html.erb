@@ -23,7 +23,7 @@
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
-​
+
       #pac-input {
         background-color: #fff;
         font-family: Roboto;
@@ -34,21 +34,21 @@
         text-overflow: ellipsis;
         width: 300px;
       }
-​
+
       #pac-input:focus {
         border-color: #4d90fe;
       }
-​
+
       .pac-container {
         font-family: Roboto;
       }
-​
+
       #type-selector {
         color: #fff;
         background-color: #4d90fe;
         padding: 5px 11px 0px 11px;
       }
-​
+
       #type-selector label {
         font-family: Roboto;
         font-size: 13px;
@@ -62,45 +62,45 @@
         <div id="type-selector" class="controls">
           <input type="radio" name="type" id="changetype-all" checked="checked">
           <label for="changetype-all">All</label>
-​
+
           <input type="radio" name="type" id="changetype-establishment">
           <label for="changetype-establishment">Establishments</label>
-​
+
           <input type="radio" name="type" id="changetype-address">
           <label for="changetype-address">Addresses</label>
-​
+
           <input type="radio" name="type" id="changetype-geocode">
           <label for="changetype-geocode">Geocodes</label>
         </div>
         <div id="map"></div>
     <div id="map"></div>
-​
+
     <script>
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-​
+
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
+          center: {lat: 51.525659, lng: -0.0897507},
           zoom: 13
         });
         var input = /** @type {!HTMLInputElement} */(
             document.getElementById('pac-input'));
-​
+
         var types = document.getElementById('type-selector');
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-​
+
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
-​
+
         var infowindow = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({
           map: map,
           anchorPoint: new google.maps.Point(0, -29)
         });
-​
+
         autocomplete.addListener('place_changed', function() {
           infowindow.close();
           marker.setVisible(false);
@@ -109,7 +109,7 @@
             window.alert("Autocomplete's returned place contains no geometry");
             return;
           }
-​
+
           // If the place has a geometry, then present it on a map.
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
@@ -126,7 +126,7 @@
           }));
           marker.setPosition(place.geometry.location);
           marker.setVisible(true);
-​
+
           var address = '';
           if (place.address_components) {
             address = [
@@ -135,13 +135,18 @@
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
-​
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address +
-          "<form action='/places/create' method='post'><input type='hidden' name='name' value='place.name'><input type='hidden' name='address' value='address'><input type='hidden' name='place_id' value='place.place_id'><input type='submit'></form>"
-            );
+
+          infowindow.setContent('<div><strong>' + place.name + ';' + '</strong><br>' + address + '<button id="save_place">Add Location?</button>');
           infowindow.open(map, marker);
+          document.getElementById("save_place").addEventListener("click", add_to_db);
+          function add_to_db() {
+            document.getElementById('formname').value = place.name;
+            document.getElementById('formaddress').value = address;
+            document.getElementById('placeid').value = place.place_id;
+            document.getElementById('form').submit();
+          };
         });
-​
+
         // Sets a listener on a radio button to change the filter type on Places
         // Autocomplete.
         function setupClickListener(id, types) {
@@ -150,14 +155,25 @@
             autocomplete.setTypes(types);
           });
         }
-​
+
         setupClickListener('changetype-all', []);
         setupClickListener('changetype-address', ['address']);
         setupClickListener('changetype-establishment', ['establishment']);
         setupClickListener('changetype-geocode', ['geocode']);
       }
+
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATOWWZzGpccm7Nzj3TpGbxTObrjem_lzg&libraries=places&callback=initMap"
         async defer></script>
+
+      <form id="form" action="/places" method="post">
+      <input type="hidden" name="name" id="formname" value="">
+      <input type="hidden" name="address" id="formaddress" value="">
+      <input type="hidden" name="google_place_id" id="placeid" value="">
+      <input type="submit" value="Submit">
+      </form>
+
   </body>
+
 </html>

@@ -21,9 +21,11 @@ feature 'places' do
 
     scenario 'user specifies hotbox commercial street' do
       visit '/places/new'
-      fill_in 'Place Name', with: 'hotbox'
-      fill_in 'Place Street', with: 'commercial street'
-      click_button 'Submit'
+      fill_in 'pac-input', with: 'hotbox commercial street'
+      within 'input#pac-input.controls' do
+        element.send_keys :down
+      end
+      click_button 'Add location?'
       expect(current_path).to eq '/places'
       expect(page).to have_content 'HotBox London'
       expect(page).to have_content '46-48 Commercial St, London E1 6LT, United Kingdom'

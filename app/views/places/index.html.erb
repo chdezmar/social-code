@@ -1,2 +1,21 @@
+<% if @places.any? %>
+<ul>
+    <% @places.each do |place| %>
+    <li>
+      <%= place.name %>
+    <br>
+      <%= place.address %>
+    <br>
+    <br>
+    </li>
+    <% end %>
+</ul>
+  <% else %>
+
 No Places yet
+
+<% end %>
+
+
+
 <%= link_to "Add a Place", new_place_path %>
