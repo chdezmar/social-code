@@ -8,14 +8,16 @@
       <%= place.address %>
     <br>
     <br>
-
+    <% if current_user && LocationManager.where(user_id: current_user.id) == [] %>
       <form action='/location_managers' method='post'>
-        <input type='hidden' name='user_id' value="<%= current_user ? current_user.id : nil %>" />
+        <input type='hidden' name='user_id' value="<%=current_user.id%>" />
         <input type='hidden' name='place_id' value="<%= place.id %>" />
         <input type='submit' name='Check in' value='Check in'/>
       </form>
     </li>
     <% end %>
+    <% end %>
+
 </ul>
   <% else %>
 
