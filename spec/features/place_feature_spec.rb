@@ -27,12 +27,5 @@ feature 'places' do
 
   end
 
-  # context 'users can save locations' do
-  #
-  #   scenario 'user specifies ' do
-  #
-  #   end
-  #
-  # end
 
 end
