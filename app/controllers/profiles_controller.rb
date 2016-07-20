@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
   def edit
     @user = current_user
     @profile = Profile.find_by(user_id: current_user.id)
+    @languages = Language.all
   end
 
   def show

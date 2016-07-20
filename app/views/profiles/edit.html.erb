@@ -3,5 +3,8 @@
   <%= f.text_field :name %>
   <%= f.label :email %>
   <%= f.text_field :email %>
+  <% @languages.each do |language| %>
+    <%= f.check_box :language_type %>
+  <% end %>
   <%= f.submit %>
 <% end %>
