@@ -9,10 +9,13 @@ feature 'User' do
       expect(page).to have_link('Sign in')
       end
     end
+
   context 'has signed up' do
     it 'should see a sign out link' do
       sign_up_user
       expect(page).to have_link('Sign out')
       end
   end
+
+  
 end

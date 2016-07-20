@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   resources :places
 
+  resources :location_managers
+
 end

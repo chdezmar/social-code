@@ -7,6 +7,11 @@
       <%= place.address %>
     <br>
     <br>
+      <form action='/location_managers' method='post'>
+        <input type='hidden' name='user_id' value="<%= current_user.id %>" />
+        <input type='hidden' name='place_id' value="<%= place.id %>" />
+        <input type='submit' name='Check in' />
+      </form>
     </li>
     <% end %>
 </ul>
