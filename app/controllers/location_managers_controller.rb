@@ -7,8 +7,11 @@ class LocationManagersController < ApplicationController
     redirect_to '/'
   end
 
-  def destroy
-  end
+  # def destroy
+  #   @location_manager = LocationManager.find(params[:id])
+  #   @location_manager.destroy
+  #   redirect_to '/'
+  # end
 
   private
 
