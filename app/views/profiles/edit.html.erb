@@ -1,10 +1,20 @@
 <%= form_for [@user,@profile] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <% @languages.each do |language| %>
-    <%= f.check_box :language_type %>
-  <% end %>
-  <%= f.submit %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+    <%= f.label :bio %>
+    <%= f.text_field :bio%>
+  </div>
+
+  <!-- # Checkbox part of the form that now works! -->
+    <div>
+      <% Language.all.each do |language| %>
+        <%= check_box_tag "profile[language_ids][]", language.id, f.object.languages.include?(language) %>
+        <%= language.language_type %>
+      <% end %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
