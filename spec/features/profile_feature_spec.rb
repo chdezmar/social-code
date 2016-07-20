@@ -12,11 +12,12 @@ feature 'user profile' do
       scenario 'user successfully updates their profile' do
         sign_up_user
         click_link 'Your profile'
-        click_link 'Update Profile'
+        click_link 'Edit profile'
         fill_in 'Name', with: 'Bob'
-        click_button 'Submit'
-        expect(current_path).to eq '/users/1/profiles/1'
+        fill_in 'Email', with: 'bob@bob.com'
+        click_button 'Update Profile'
         expect(page).to have_content 'Bob'
+        expect(page).to have_content 'bob@bob.com'
       end
     end
   end

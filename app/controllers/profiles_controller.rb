@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
   def show
@@ -28,7 +30,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:name)
+    params.require(:profile).permit(:name, :email)
   end
 
 end

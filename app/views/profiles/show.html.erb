@@ -1,6 +1,13 @@
-<%= form_for [@user,@profile] do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
-
-<%= current_user.profile.name %>
+<br>
+<br>
+Profile Name: <%= current_user.profile.name %>
+<br>
+<br>
+Email Address: <%= current_user.profile.email %>
+<!-- <br> -->
+<!-- Places Visited:
+<br> -->
+<!-- Languages: -->
+<br>
+<br>
+<%= link_to 'Edit profile', edit_user_profile_path(current_user.id, current_user.profile.id) %>
