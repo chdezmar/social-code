@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'profiles#index'
+  root 'profiles#index'
 
-  resources :users
-  resources :profiles
+  resources :users do
+    resources :profiles
+  end
+
 
 
 end

@@ -1,0 +1,6 @@
+<%= form_for [@user,@profile] do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+
+<%= current_user.profile.name %>
