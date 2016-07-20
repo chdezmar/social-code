@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'places#index'
 
-  resources :user do
-    resources :profile
+  resources :users do
+    resources :profiles
   end
 
   resources :places
