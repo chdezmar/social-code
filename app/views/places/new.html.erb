@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Place Autocomplete</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -106,7 +105,7 @@
           marker.setVisible(false);
           var place = autocomplete.getPlace();
           if (!place.geometry) {
-            window.alert("Autocomplete's returned place contains no geometry");
+            window.alert("Please enter another location. This was not found.");
             return;
           }
 
@@ -132,11 +131,13 @@
             address = [
               (place.address_components[0] && place.address_components[0].short_name || ''),
               (place.address_components[1] && place.address_components[1].short_name || ''),
-              (place.address_components[2] && place.address_components[2].short_name || '')
+              (place.address_components[2] && place.address_components[2].short_name || ''),
+              (place.address_components[7] && place.address_components[7].short_name || '')
             ].join(' ');
           }
+          console.log(place.address_components)
 
-          infowindow.setContent('<div><strong>' + place.name + ';' + '</strong><br>' + address + '<button id="save_place">Add Location?</button>');
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + ' ' + '<button id="save_place">Add Location?</button>');
           infowindow.open(map, marker);
           document.getElementById("save_place").addEventListener("click", add_to_db);
           function add_to_db() {
