@@ -2,15 +2,17 @@
 <ul>
     <% @places.each do |place| %>
     <li>
-      <%= place.name %>
+      <%= link_to place.name, place_path(place)%>
+
     <br>
       <%= place.address %>
     <br>
     <br>
+
       <form action='/location_managers' method='post'>
-        <input type='hidden' name='user_id' value="<%= current_user.id %>" />
+        <input type='hidden' name='user_id' value="<%= current_user ? current_user.id : nil %>" />
         <input type='hidden' name='place_id' value="<%= place.id %>" />
-        <input type='submit' name='Check in' />
+        <input type='submit' name='Check in' value='Check in'/>
       </form>
     </li>
     <% end %>

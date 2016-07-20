@@ -1,4 +1,5 @@
 class LocationManager < ApplicationRecord
-  has_many :users
-  has_many :places
+  belongs_to :user
+  belongs_to :place
+  validates :user_id, :presence => true
 end

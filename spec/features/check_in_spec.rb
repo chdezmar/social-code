@@ -6,13 +6,13 @@ feature 'User' do
     xit 'should not be able to check in a place' do
       Place.create(name: 'Hotbox')
       visit '/'
-      click_link('Check in')
+      click_button('Check in')
       expect(current_path).to be('/users/sign_in')
       end
     end
     context 'user can check in to a place' do
       it 'should be able to check in a place' do
-        Place.create(name: 'Hotbox')
+        Place.create(name: 'Hotbox', address: 'adsfasdf')
         sign_up_user
         visit '/'
         click_button('Check in')
