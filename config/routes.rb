@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'profiles#index'
 
   resources :users do
-    resource :profile
+    resources :profiles
   end
 
 
