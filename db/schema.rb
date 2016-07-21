@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160720154259) do
   create_table "languages_profiles", id: false, force: :cascade do |t|
     t.integer "language_id", null: false
     t.integer "profile_id",  null: false
->>>>>>> master
   end
 
   create_table "places", force: :cascade do |t|
