@@ -7,12 +7,14 @@
   </div>
 
   <!-- # Checkbox part of the form that now works! -->
-    <div>
+    <ul>
       <% Language.all.each do |language| %>
-        <%= check_box_tag "profile[language_ids][]", language.id, f.object.languages.include?(language) %>
-        <%= language.language_type %>
+        <li>
+          <%= check_box_tag "profile[language_ids][]", language.id, f.object.languages.include?(language) %>
+          <%= language.language_type %>
+        </li>
       <% end %>
-    </div>
+    </ul>
 
   <div class="actions">
     <%= f.submit %>
