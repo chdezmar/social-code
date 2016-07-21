@@ -48,7 +48,11 @@ RSpec.configure do |config|
        uncommitted transaction data setup over the spec's database connection.
      MSG
    end
-   DatabaseCleaner.clean_with(:truncation)
+
+   config.add_setting(:seed_tables)
+   config.seed_tables = %w(languages)
+
+   DatabaseCleaner.clean_with(:truncation, except: config.seed_tables)
  end
 
  config.before(:each) do
@@ -64,7 +68,7 @@ RSpec.configure do |config|
      # Driver is probably for an external browser with an app
      # under test that does ​*not*​ share a database connection with the
      # specs, so use truncation strategy.
-     DatabaseCleaner.strategy = :truncation
+     DatabaseCleaner.strategy = :truncation, {except: config.seed_tables}
    end
  end
 
