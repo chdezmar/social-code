@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720121153) do
+
+ActiveRecord::Schema.define(version: 20160720154259) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "location_managers", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,6 +25,17 @@ ActiveRecord::Schema.define(version: 20160720121153) do
     t.integer  "place_id"
     t.index ["place_id"], name: "index_location_managers_on_place_id", using: :btree
     t.index ["user_id"], name: "index_location_managers_on_user_id", using: :btree
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "language_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "languages_profiles", id: false, force: :cascade do |t|
+    t.integer "language_id", null: false
+    t.integer "profile_id",  null: false
+>>>>>>> master
   end
 
   create_table "places", force: :cascade do |t|
@@ -37,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160720121153) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.string   "name"
+    t.string   "bio"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 

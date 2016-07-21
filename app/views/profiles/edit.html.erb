@@ -1,0 +1,22 @@
+<%= form_for [@user,@profile] do |form| %>
+  <div class="field">
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <%= form.label :bio %>
+    <%= form.text_field :bio%>
+  </div>
+
+  <div class="field">
+    <%= form.label "Programming Languages" %><br />
+    <%= form.collection_check_boxes :language_ids, Language.all, :id, :language_type do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

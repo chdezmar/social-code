@@ -6,11 +6,15 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @profile = Profile.find_by(user_id: current_user.id)
+    @languages = Language.all
   end
 
   def show
     @user = current_user
     @profile = Profile.find_by(user_id: current_user.id)
+    @languages = Profile.find_by(user_id: current_user.id).languages
   end
 
   def update
@@ -28,7 +32,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:name)
+    params.require(:profile).permit(:name, :bio, language_ids:[])
   end
 
 end

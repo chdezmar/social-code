@@ -1,6 +1,26 @@
-<%= form_for [@user,@profile] do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+<br>
+<br>
+Profile Name: <%= current_user.profile.name %>
+<br>
+<br>
+Bio: <%= current_user.profile.bio %>
+<br>
+<br>
+Languages:
+<% if @languages.any? %>
+<ul>
+    <% @languages.each do |language| %>
+    <li>
+      <%= language.language_type %>
+    </li>
+    <% end %>
+</ul>
+  <% else %>
+
+No Languages selected yet
+
 <% end %>
 
-<%= current_user.profile.name %>
+<br>
+<br>
+<%= link_to 'Edit profile', edit_user_profile_path(current_user.id, current_user.profile.id) %>
