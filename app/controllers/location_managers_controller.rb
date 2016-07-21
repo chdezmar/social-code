@@ -8,8 +8,8 @@ class LocationManagersController < ApplicationController
   end
 
   def destroy
-    @location_manager = LocationManager.find(params[:id])
-    @location_manager.destroy
+    @location_manager_wipe = LocationManager.find(params[:id])
+    @location_manager_wipe.destroy
     flash[:notice] = 'You have checked out succesfully'
     redirect_to '/'
   end
@@ -19,5 +19,7 @@ class LocationManagersController < ApplicationController
   def loc_params
     params.permit(:user_id, :place_id)
   end
+
+  attr_reader :location_manager
 
 end

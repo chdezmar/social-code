@@ -6,10 +6,10 @@
 
     <br>
       <%= place.address %>
-      Currently here: <%= LocationManager.where(place_id: place.id).count %>
+      Currently here: <%= @location_manager.place_count(place.id) %>
     <br>
     <br>
-    <% if current_user && LocationManager.where(user_id: current_user.id) == [] %>
+    <% if current_user && @location_manager.user_not_checked_in?(current_user.id) %>
       <form action='/location_managers' method='post'>
         <input type='hidden' name='user_id' value="<%=current_user.id%>" />
         <input type='hidden' name='place_id' value="<%= place.id %>" />
@@ -21,11 +21,8 @@
 
 </ul>
   <% else %>
-
 No Places yet
-
 <% end %>
-
 
 
 <%= link_to "Add a Place", new_place_path %>
