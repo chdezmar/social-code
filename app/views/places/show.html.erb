@@ -1,5 +1,9 @@
-
+<div class="user_list">
 Currently here: <%= @location_managers.count %>
 <% @location_managers.each do |location|  %>
+ <br>
+ <br>
   <%= link_to location.user.email, user_profile_path(location.user) %>
+  <br>
 <% end%>
+</div>
