@@ -12,9 +12,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @profile = Profile.find_by(user_id: current_user.id)
-    @languages = Profile.find_by(user_id: current_user.id).languages
+    @user = Profile.find_by(user_id: params[:user_id])
+    @languages = @user.languages
   end
 
   def update

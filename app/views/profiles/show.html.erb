@@ -1,9 +1,9 @@
 <br>
 <br>
-Profile Name: <%= current_user.profile.name %>
+Profile Name: <%= @user.name %>
 <br>
 <br>
-Bio: <%= current_user.profile.bio %>
+Bio: <%= @user.bio %>
 <br>
 <br>
 Languages:
@@ -23,4 +23,3 @@ No Languages selected yet
 
 <br>
 <br>
-<%= link_to 'Edit profile', edit_user_profile_path(current_user.id, current_user.profile.id) %>

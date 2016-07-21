@@ -1,5 +1,5 @@
 
 Currently here: <%= @location_managers.count %>
 <% @location_managers.each do |location|  %>
-  <%= location.user.email %>
+  <%= link_to location.user.email, user_profile_path(location.user) %>
 <% end%>
