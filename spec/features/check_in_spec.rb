@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-feature 'User' do
+feature 'Check in' do
   context 'has not signed up yet' do
     it 'should not be able to check in a place' do
       Place.create(name: 'Hotbox', address: 'address')

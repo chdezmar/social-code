@@ -21,8 +21,17 @@ feature 'Check out' do
       Place.create(name: 'Hotbox', address: 'address')
       visit '/'
       click_button('Check in')
-      expect(page).to have_button('Check out')
+      expect(page).to have_link('Check out')
       expect(page).to have_content('You are checked into Hotbox')
+    end
+
+    it 'should flash a check out message' do
+      sign_up_user
+      Place.create(name: 'Hotbox', address: 'address')
+      visit '/'
+      click_button('Check in')
+      click_link('Check out')
+      expect(page).to have_content('You have checked out succesfully')
     end
 
   end

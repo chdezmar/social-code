@@ -6,6 +6,7 @@
 
     <br>
       <%= place.address %>
+      Currently here: <%= LocationManager.where(place_id: place.id).count %>
     <br>
     <br>
     <% if current_user && LocationManager.where(user_id: current_user.id) == [] %>
