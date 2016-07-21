@@ -6,6 +6,10 @@ class PlacesController < ApplicationController
     @places = Place.all
   end
 
+  def show
+    @location_managers = LocationManager.where(place_id: params[:id])
+  end
+
   def new
     @place = Place.new
   end

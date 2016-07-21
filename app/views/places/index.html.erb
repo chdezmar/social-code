@@ -2,20 +2,27 @@
 <ul>
     <% @places.each do |place| %>
     <li>
-      <%= place.name %>
+      <%= link_to place.name, place_path(place)%>
+
     <br>
       <%= place.address %>
+      Currently here: <%= @location_manager.place_count(place.id) %>
     <br>
     <br>
+    <% if current_user && @location_manager.user_not_checked_in?(current_user.id) %>
+      <form action='/location_managers' method='post'>
+        <input type='hidden' name='user_id' value="<%=current_user.id%>" />
+        <input type='hidden' name='place_id' value="<%= place.id %>" />
+        <input type='submit' name='Check in' value='Check in'/>
+      </form>
     </li>
     <% end %>
+    <% end %>
+
 </ul>
   <% else %>
-
 No Places yet
-
 <% end %>
-
 
 
 <%= link_to "Add a Place", new_place_path %>

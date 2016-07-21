@@ -1,0 +1,5 @@
+
+Currently here: <%= @location_managers.count %>
+<% @location_managers.each do |location|  %>
+  <%= location.user.email %>
+<% end%>

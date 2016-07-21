@@ -17,4 +17,6 @@ feature 'User' do
       expect(page).to have_link('Sign out')
       end
   end
+
+  
 end

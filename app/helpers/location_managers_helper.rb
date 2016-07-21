@@ -1,0 +1,2 @@
+module LocationManagersHelper
+end
