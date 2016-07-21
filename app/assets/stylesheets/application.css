@@ -23,7 +23,7 @@
  }
 
  a {
-   color: #00CDCD;
+   color: #6699ff;
    font-size: 19px;
    text-decoration: none;
  }
@@ -35,7 +35,7 @@
  }
 
  nav{
-   background-color: #00CDCD;
+   background-color: #6699ff;
    font-family: 'Quicksand', sans-serif;
    color: white;
    text-align: center;
@@ -74,7 +74,7 @@
 
   .places_list {
   text-align: center;
-  border: solid 2px #00CDCD;
+  border: solid 2px #6699ff;
   margin-bottom: 2.5em;
   padding: 1em;
   border-radius: 8px;
@@ -98,14 +98,14 @@
  input[type="date"],
  input[type="password"],
  input[type="email"] {
-   border: solid 1px #00CDCD;
+   border: solid 1px #6699ff;
    border-radius: 5px;
    padding: 5px;
    margin-bottom: 1em;
  }
 
  input[type="checkbox"] {
-   border: solid 1px #00CDCD;
+   border: solid 1px #6699ff;
    border-radius: 5px;
    padding: 5px;
    margin-bottom: 1em;
