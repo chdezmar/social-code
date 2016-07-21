@@ -4,10 +4,23 @@ Profile Name: <%= current_user.profile.name %>
 <br>
 <br>
 Bio: <%= current_user.profile.bio %>
-<!-- <br> -->
-<!-- Places Visited:
-<br> -->
-<!-- Languages: -->
+<br>
+<br>
+Languages:
+<% if @languages.any? %>
+<ul>
+    <% @languages.each do |language| %>
+    <li>
+      <%= language.language_type %>
+    </li>
+    <% end %>
+</ul>
+  <% else %>
+
+No Languages selected yet
+
+<% end %>
+
 <br>
 <br>
 <%= link_to 'Edit profile', edit_user_profile_path(current_user.id, current_user.profile.id) %>

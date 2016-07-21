@@ -6,15 +6,15 @@
     <%= f.text_field :bio%>
   </div>
 
-  <!-- # Checkbox part of the form that now works! -->
-    <ul>
-      <% Language.all.each do |language| %>
-        <li>
-          <%= check_box_tag "profile[language_ids][]", language.id, f.object.languages.include?(language) %>
-          <%= language.language_type %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="field">
+    <%= f.label "Programming Languages" %><br />
+    <%= f.collection_check_boxes :language_ids, Language.all, :id, :language_type do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
