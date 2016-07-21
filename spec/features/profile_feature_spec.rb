@@ -5,7 +5,7 @@ feature 'user profile' do
     scenario  'profile is created automatically' do
       sign_up_user
       click_link 'Your profile'
-      # expect(current_path).to eq '/users/1/profiles/1'
+      expect(current_path).to eq '/users/1/profiles/1'
       expect(page).to have_content 'Name'
       expect(page).to have_content 'Bio'
     end
