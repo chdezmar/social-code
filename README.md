@@ -2,6 +2,23 @@
 Don't code alone.
 A web app for developers, to gather and collaborate.
 
+This project is the result of one week's work between five people. It currently has reached the stage of V1 (MVP).
+
+Made as part of the course at Makers Academy.
+
+# App Description
+
+A web application that allows users to add places that they are coding in public spaces, and to encourage users to meet and code together.
+
+# Testing framework
+
+All tests throughout the stack are done in Rspec and Capybara.
+
+# Technologies
+
+The application is built using the Google Maps API, Ruby on Rails backend, running with a PostgreSQL database.
+
+# User Stories
 ## V1 (MVP)
 
 ```
