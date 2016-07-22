@@ -17,7 +17,7 @@
     <% if user_signed_in? %>
     <% unless @location_manager.user_not_checked_in?(current_user.id)%>
       You are checked into <%= @location_manager.user_location(current_user.id) %>
-      <%= link_to 'Check out', location_manager_path(@location_manager.find_location_id(current_user.id)), method: :delete %>
+      <%= link_to 'Check out', location_manager_path(@location_manager.find_location_entry(current_user.id)), method: :delete %>
     <% end %>
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <%= link_to 'Your profile', user_profile_path(current_user.id, current_user.profile.id)%>
