@@ -77,7 +77,7 @@
           }
           console.log(place.address_components)
 
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + ' ' + '<button id="save_place">Add Location</button>');
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + ' ' + '<button class="button" id="save_place">Add Location</button>');
           infowindow.open(map, marker);
           document.getElementById("save_place").addEventListener("click", add_to_db);
           function add_to_db() {
