@@ -10,6 +10,16 @@ Made as part of the course at Makers Academy.
 
 A web application that allows users to add places that they are coding in public spaces, and to encourage users to meet and code together.
 
+# Initial Setup
+
+When running this program, you need to enter the following lines on the command-line after cloning/forking:
+- bundle
+- bin/rails db:create
+- bin/rails db:migrate
+- bin/rails db:migrate RAILS_ENV=test
+- bin/rake db:seed
+- bin/rake db:seed RAILS_ENV=test
+
 # Testing framework
 
 All tests throughout the stack are done in Rspec and Capybara.
