@@ -28,6 +28,13 @@ All tests throughout the stack are done in Rspec and Capybara.
 
 The application is built using the Google Maps API, Ruby on Rails backend, running with a PostgreSQL database.
 
+# Contributors
+- [Carlos] (https://github.com/chdezmar)
+- [Hassan] (https://github.com/hassanrad)
+- [Jonathon] (https://github.com/jojograndjojo)
+- [Ross] (https://github.com/rb2030)
+- [Toby] (https://github.com/toby676)
+
 # User Stories
 ## V1 (MVP)
 
