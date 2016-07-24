@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Custom Marker Symbols</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+// This example uses SVG path notation to add a vector-based symbol
+// as the icon for a marker. The resulting icon is a star-shaped symbol
+// with a pale yellow fill and a thick yellow border.
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 51.525659, lng: -0.0897507},
+    zoom: 11
+  });
+
+  var infoWindow = new google.maps.InfoWindow();
+
+  var service = new google.maps.places.PlacesService(map);
+  <% @places.each do |place| %>
+   service.getDetails({
+       placeId: '<%= place.google_place_id %>'
+   }, function (result, status) {
+       var marker = new google.maps.Marker({
+           map: map,
+           place: {
+               placeId: '<%= place.google_place_id %>',
+               location: result.geometry.location
+           }
+       });
+       google.maps.event.addListener(marker, 'click', function() {
+       service.getDetails(marker.place, function(result, status) {
+       if (status !== google.maps.places.PlacesServiceStatus.OK) {
+         console.error(status);
+         return;
+       }
+       infoWindow.setContent(result.name);
+       infoWindow.open(map, marker);
+     });
+   });
+
+   });
+   <% end %>
+
+
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATOWWZzGpccm7Nzj3TpGbxTObrjem_lzg&libraries=places&callback=initMap" async defer>
+    </script>
+
+  </body>
+</html>

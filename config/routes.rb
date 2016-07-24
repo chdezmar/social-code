@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :profiles
   end
 
+  resources :map, only: [:index]
+
+
   resources :places
 
   resources :location_managers
