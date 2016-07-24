@@ -1,12 +1,17 @@
 <br>
 <div class='create_place'>
-<%= link_to "Add a Place", new_place_path %>
+  <%= link_to "Add a Place", new_place_path %>
 </div>
+
+<div class='view_map'>
+<%= link_to "View locations on Map!", map_index_path %>
+</div>
+
 
 <% if @places.any? %>
 <ul>
 
-    <% @places.each do |place| %>
+    <% @places.reverse.each do |place| %>
     <li class='main_list'>
       <div class='places_list'>
       <%= link_to place.name, place_path(place)%>
