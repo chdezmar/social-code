@@ -159,4 +159,9 @@
  .place h1, p {
    text-align: left;
    padding-left: 120px
-   }
+ }
+
+  .checked_in {
+    background-color: green;
+    color: black;
+  }
